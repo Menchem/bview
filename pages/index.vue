@@ -1,5 +1,6 @@
 <template>
-  <div class="index-wrapper">
+  <div class="index-wrapper" :style="{background: 'url(' + bgImg + ') center center no-repeat', backgroundSize: 'cover'}">
+    <client-only>
     <video
       id="video-bg"
       src="~/assets/video/bg_v.mp4"
@@ -9,7 +10,9 @@
       playsinline
       loop
       muted
+      v-if="showMobile"
     ></video>
+    </client-only>
     <div class="mask"></div>
     <div class="main-box">
       <div class="item" @click="getRouter('/home')">
@@ -50,6 +53,12 @@ import {mixin} from '@/mixins/mixin';
 export default {
   name: "IndexPage",
   mixins: [mixin],
+  data(){
+    return {
+      showMobile: true,
+      bgImg: require('@/assets/images/t11.jpg')
+    }
+  },
   beforeCreate(){
     if(process.client){
       document.querySelector('#__nuxt').setAttribute('style', 'width: 100%;height: 100%;overflow: hidden;');
@@ -59,23 +68,35 @@ export default {
   created(){
     if(process.client){
       document.title = "首页 | Menchem";
-    }   
+      let ua = navigator.userAgent
+      let isMobile = (ua) => {
+        return !!ua.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+      }    
+      if(isMobile(ua)){
+        this.showMobile = false;
+      }
+    }
+    
   },
   mounted() {
-    let bv = new Bideo();
-    bv.init({
-      // Video element
-      videoEl: document.querySelector("#video-bg"),
-      // Container element
-      container: document.querySelector("body"),
-      // Resize
-      resize: true,
-      // Array of objects containing the src and type
-      // of different video formats to add
-      src: [],
-      // What to do once video loads (initial frame)
-      onLoad: function () {},
-    });
+
+    if( !!window.ActiveXObject || 'ActiveXObject' in window){
+      let bv = new Bideo();
+      bv.init({
+        // Video element
+        videoEl: document.querySelector("#video-bg"),
+        // Container element
+        container: document.querySelector("body"),
+        // Resize
+        resize: true,
+        // Array of objects containing the src and type
+        // of different video formats to add
+        src: [],
+        // What to do once video loads (initial frame)
+        onLoad: function () {},
+      });
+    }
+    
     let statis = document.querySelector("#statis");
     let script = document.createElement("script");
     script.type="text/javascript";

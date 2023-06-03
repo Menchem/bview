@@ -64,6 +64,9 @@ export default {
         .right{
             display: none;
         }
-    }    
+    }
+    .footer{
+        display: none;
+    }   
 }
 </style>

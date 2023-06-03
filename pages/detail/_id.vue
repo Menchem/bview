@@ -19,8 +19,8 @@ export default {
     mixins: [mixin],
     async asyncData({$axios, params,app }){
         const [data1, data2] = await Promise.all([
-            $axios.$get(`http://api.zhijieliu.top/blog-content/getdetail?id=${params.id}`),
-            $axios.$get(`http://api.zhijieliu.top/blog-content/getlist?currentPage=1&size=3`),
+            $axios.$get(`/api/blog-content/getdetail?id=${params.id}`),
+            $axios.$get(`/api/blog-content/getlist?currentPage=1&size=3`),
         ]);
 
         app.head.title = data1.data.title + '_Menchem';

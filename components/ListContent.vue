@@ -167,5 +167,20 @@ export default {
     display: flex;
     justify-content: center;
   }
+  @media screen and (max-width: 640px) {
+    .list-wrapper{
+      .list-box{
+        width: 94%;
+        margin: 10px auto;
+        padding: 10px; 
+        .list-title{
+          font-size: 18px;
+        }
+        .list-description{
+          width: 200px;
+        }
+      }
+    }
+  }
 }
 </style>

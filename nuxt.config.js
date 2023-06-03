@@ -40,8 +40,23 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
+
+  axios: {
+    proxy: true,
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://127.0.0.1:8081/',
+      pathRewrite: { 
+        '^/api/': '/',
+        changeOrigin: true
+      }
+    } 
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -50,6 +65,7 @@ export default {
     extend(config, { isDev }) {
       if (isDev) {
         config.devtool = 'sourcemap';
+        //config.devtool = false;
       }else{
         config.devtool = false;
       }

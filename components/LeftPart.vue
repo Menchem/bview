@@ -19,8 +19,7 @@ export default {
   data() {
     return {
       height: 0,
-      imgSrc: "https://www.zhijieliu.top/images/author.jpg"
-      //imgSrc: "https://imagecloud.laixiazheteng.com/t_me.png"
+      imgSrc: require("@/assets/images/author.jpg")
     };
   },
   created() {

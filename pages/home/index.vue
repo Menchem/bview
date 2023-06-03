@@ -15,7 +15,7 @@ export default {
     }
   },
   async asyncData({ $axios }){
-    let data = await $axios.$get('http://api.zhijieliu.top/blog-content/getlist?currentPage=1&size=5');
+    let data = await $axios.$get('/api/blog-content/getlist?currentPage=1&size=5');
     if(data.code === 200){
       let dataArr = data.data.records.slice();
       return {
