@@ -1,6 +1,6 @@
 <template>
   <div class="index-wrapper" :style="{background: 'url(' + bgImg + ') center center no-repeat', backgroundSize: 'cover'}">
-    <client-only>
+    <no-ssr>
     <video
       id="video-bg"
       src="~/assets/video/bg_v.mp4"
@@ -12,8 +12,10 @@
       muted
       v-if="showMobile"
     ></video>
-    </client-only>
+   </no-ssr>
+    
     <div class="mask"></div>
+    <no-ssr>
     <div class="main-box">
       <div class="item" @click="getRouter('/home')">
         <div class="icon-box">
@@ -40,10 +42,12 @@
         </div>
       </div>
     </div>
+    </no-ssr>
     <div class="description">Sharp tools make good work.</div>
     <div id="statis">
       <p>版权所有 &copy; 2022 by <b>Menchem</b></p>
     </div>
+   
   </div>
 </template>
 

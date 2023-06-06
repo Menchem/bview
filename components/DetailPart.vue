@@ -3,22 +3,22 @@
     <div class="banner">
       <div class="mask"></div>
       <div class="title-box">
-        <div class="title">{{ detailData.title }}</div>
+        <div class="title">{{ detailData?.title }}</div>
         <div class="sub-box">
-          <div class="date">{{ timestampToTime(detailData.publictime) }}</div>
+          <div class="date">{{ timestampToTime(detailData?.publictime) }}</div>
           <div class="white">|</div>
-          <div class="author"><a-icon type="user" />&nbsp;{{detailData.author}}</div>
+          <div class="author"><a-icon type="user" />&nbsp;{{detailData?.author}}</div>
         </div>
       </div>
     </div>
     <div class="detail-box">
-      <div class="content" v-html="detailData.content"></div>
+      <div class="content markdown-body" v-html="detailData?.content"></div>
       <div class="content-right">
         <div class="white-box">
           <div class="title">最新内容</div>
           <div class="list">
             <ul>
-              <li v-for="item in newData"><nuxt-link :to="'/detail/' + item.id" target="_blank" >{{item.title}}</nuxt-link></li>
+              <li v-for="item in newData"><nuxt-link :to="'/detail/' + item.id" target="_blank" >{{item?.title}}</nuxt-link></li>
             </ul>
           </div>
         </div>
@@ -31,6 +31,14 @@
 export default {
   name: "DetailPart",
   props: ["detailData", "newData"],
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+    hljs.highlightAll();
+  },
   methods: {
     timestampToTime(timestamp) {
         let date = new Date(timestamp);
@@ -116,11 +124,15 @@ export default {
     .content{
       padding: 20px;
       width: 70%;
+      min-height: 600px;
       background-color: #ffffff;
       float: left;
       line-height: 28px;
       color: #3d464d;
-      font-size: 15px;
+      font-size: 15px;   
+      code{
+        line-height: 30px;
+      }
     }
     .content-right{
       width: 30%;

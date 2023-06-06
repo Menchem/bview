@@ -12,18 +12,22 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', type:'text/css', href: '/css/code.css'},
+      { rel: 'stylesheet', type:'text/css', href: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css'},
+        
     ],
     script: [
       {src: '/js/polyfills.js'},
       {src: '/js/url-search-params-polyfill.js'},
       {src: '/js/bideo.js'},
+      {src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'ant-design-vue/dist/antd.css'
+    'ant-design-vue/dist/antd.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -61,6 +65,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: null,
+    compact: false,
     transpile: ['js-base64', 'ansi-regex', 'strip-ansi'],
     extend(config, { isDev }) {
       if (isDev) {

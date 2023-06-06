@@ -23,7 +23,7 @@ export default {
             $axios.$get(`/api/blog-content/getlist?currentPage=1&size=3`),
         ]);
 
-        app.head.title = data1.data.title + '_Menchem';
+        app.head.title = data1.data?.title + '_Menchem';
         return {
             detailData: data1.data,
             newData: data2.data.records
