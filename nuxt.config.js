@@ -30,6 +30,9 @@ export default {
     'ant-design-vue/dist/antd.css',
   ],
 
+  //加载进度条颜色
+  loading: {color: '#09fd38'},
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/antd-ui'
