@@ -8,6 +8,9 @@ export const mixin = {
     methods: {
         getRouter(param){
           this.$router.push(param);
+        },
+        targetRouter(param){
+          window.open('/detail/' + param);
         }
     } 
 }

@@ -3,7 +3,7 @@
     <div class="menu-wrapper">
         <MenuList style="width: 60%;border: none;" />
         <div class="search-wrapper">
-            <a-input-search placeholder="关键字"  @search="onSearch" />
+            <a-input-search placeholder="关键字" v-model="searchValue"  @search="onSearch" />
         </div>       
     </div>
     <div class="content">
@@ -21,9 +21,14 @@ export default {
     name: "CenterPart",
     mixins: [mixin],
     props: ['homeData'],
+    data(){
+      return {
+        searchValue: ""
+      }
+    },
     methods: {
         onSearch(){
-            console.log("搜索");
+            this.getRouter('/search/' + this.searchValue.trim())
         }
     }
 }
