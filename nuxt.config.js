@@ -14,14 +14,14 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type:'text/css', href: '/css/code.css'},
-      { rel: 'stylesheet', type:'text/css', href: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css'},
+      { rel: 'stylesheet', type:'text/css', href: '/css/github-dark.min.css'},
         
     ],
     script: [
       {src: '/js/polyfills.js'},
       {src: '/js/url-search-params-polyfill.js'},
       {src: '/js/bideo.js'},
-      {src: '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'}
+      {src: '/js/highlight.min.js'}
     ]
   },
 
