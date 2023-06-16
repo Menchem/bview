@@ -14,8 +14,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type:'text/css', href: '/css/code.css'},
-      { rel: 'stylesheet', type:'text/css', href: '/css/github-dark.min.css'},
-        
+      { rel: 'stylesheet', type:'text/css', href: '/css/github-dark-dimmed.min.css'},
+      //https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark-dimmed.min.css 
     ],
     script: [
       {src: '/js/polyfills.js'},
