@@ -18,7 +18,7 @@
             <a-icon type="schedule" style="color: #999;font-size: 12px" />&nbsp;{{item.description}}
           </div>
           <div class="list-data">
-            <div class="tj">阅读：100</div>
+            <div class="tj">阅读：{{item.pv}}</div>
             <nuxt-link :to="'/detail/' + item.id" target="_blank"><div class="btn"><a-icon type="read" />&nbsp;阅读全文</div></nuxt-link>
           </div>
         </div>

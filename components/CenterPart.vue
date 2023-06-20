@@ -20,7 +20,7 @@ import {mixin} from '@/mixins/mixin';
 export default {
     name: "CenterPart",
     mixins: [mixin],
-    props: ['homeData'],
+    props: ['homeData', 'clickNum'],
     data(){
       return {
         searchValue: ""
@@ -30,6 +30,22 @@ export default {
         onSearch(){
             this.getRouter('/search/' + this.searchValue.trim())
         }
+    },
+    created(){
+        this.homeData.map((item) => {
+            let n =  this.clickNum.filter((item1) => {
+                return item1.path === '/detail/' + item.id
+            })
+            if(n[0]){
+                this.$set(item, 'pv', n[0].pv);
+            }else{
+                this.$set(item, 'pv', '***');
+            }
+            
+        });
+    },
+    mounted(){
+        //挂载完成
     }
 }
 </script>

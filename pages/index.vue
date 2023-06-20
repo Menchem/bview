@@ -101,11 +101,6 @@ export default {
       });
     }
     
-    let statis = document.querySelector("#statis");
-    let script = document.createElement("script");
-    script.type="text/javascript";
-    script.src = "https://js.users.51.la/21662937.js";
-    statis.appendChild(script);
   } 
 };
 </script>

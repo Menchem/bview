@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <LeftPart />
-    <CenterPart :home-data="homeData" />
+    <CenterPart :home-data="homeData" :click-num="clickNum"  />
   </div>
 </template>
 
@@ -16,14 +16,17 @@ export default {
   },
   async asyncData({ $axios }){
     let data = await $axios.$get('/api/blog-content/getlist?currentPage=1&size=5');
+    let numData = await $axios.$get('/api-num/clickNum');
     if(data.code === 200){
       let dataArr = data.data.records.slice();
       return {
-        homeData: dataArr
+        homeData: dataArr,
+        clickNum: numData.data,
       }
     }else{
       return {
-        homeData: []
+        homeData: [],
+        clickNum: []
       }
     }
     
@@ -37,6 +40,9 @@ export default {
     return {
       homeData: null,
     }
+  },
+  mounted(){
+    //挂载完成
   }
 }
 </script>
